@@ -9,9 +9,9 @@ class ListAllUsersController {
     try {
       const user_id  = request.header("user_id");
       const all = this.listAllUsersUseCase.execute({user_id});
-      return response.json(all);
+      return response.status(200).json(all);
     } catch (error) {
-      return response.status(400).json({error});
+      return response.status(400).json({error: error.message});
     }
   }
 }
